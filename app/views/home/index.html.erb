@@ -1,0 +1,31 @@
+<h1>Flats</h1>
+<h3>Boas vindas ao sistema de locação de apartamentos</h3>
+
+<% if @properties.empty? %>
+  <%= "Nenhum imóvel disponível" %>
+<% else %>
+  <% @properties.each do |data| %>
+    <%= data.title %>
+    <%= data.description %>
+    <%= "Quartos: #{data.rooms}" %>
+    <%= "Banheiros: #{data.bathrooms}" %>
+    <% if data.pets == true %>
+      <%= "Aceita Pets: Sim" %>
+    <% else %>
+      <%= "Aceita Pets: Não" %>
+    <% end %>
+
+    <% if data.parking_slot == true %>
+      <%= "Estacionamento: Sim" %>
+    <% else %>
+      <%= "Estacionamento: Não" %>
+    <% end %>
+    <%= "Diária: R$ #{data.daily_rate}" %>
+  <% end %>
+<% end %>
+
+<h1>Properties</h1>
+
+<% @properties.each do |property| %>
+  <%= link_to property.title, @property_path %>
+<% end %>
