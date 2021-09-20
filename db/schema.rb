@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_09_17_145457) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "bathrooms"
     t.boolean "pets"
-    t.integer "daily_rate"
+    t.decimal "daily_rate"
   end
 
 end

@@ -2,30 +2,11 @@
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
 
 <% if @properties.empty? %>
-  <%= "Nenhum imóvel disponível" %>
+  <h2><%= "Nenhum imóvel disponível" %></h2>
 <% else %>
   <% @properties.each do |data| %>
-    <%= data.title %>
-    <%= data.description %>
-    <%= "Quartos: #{data.rooms}" %>
-    <%= "Banheiros: #{data.bathrooms}" %>
-    <% if data.pets == true %>
-      <%= "Aceita Pets: Sim" %>
-    <% else %>
-      <%= "Aceita Pets: Não" %>
-    <% end %>
-
-    <% if data.parking_slot == true %>
-      <%= "Estacionamento: Sim" %>
-    <% else %>
-      <%= "Estacionamento: Não" %>
-    <% end %>
-    <%= "Diária: R$ #{data.daily_rate}" %>
+    <h2><%= link_to(data.title, property_path(data.id)) %></h2>
+    <h3><%= data.description %></h3>
+    <h3><%= "Quartos: #{data.rooms}" %></h3>
   <% end %>
-<% end %>
-
-<h1>Properties</h1>
-
-<% @properties.each do |property| %>
-  <%= link_to property.title, @property_path %>
 <% end %>
