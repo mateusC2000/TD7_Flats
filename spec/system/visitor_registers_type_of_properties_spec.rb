@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Visitor registers types of properties' do
+describe 'Visitor register types of properties' do
   it 'successfully' do
 
     visit root_path

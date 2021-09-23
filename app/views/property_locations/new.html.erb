@@ -1,0 +1,12 @@
+<%= form_with model: @property_location do |f| %>
+  <div>
+  <%= f.label :name, 'Nome'%>
+  <%= f.text_field :name %>
+  </div>
+
+  <% @property_location.errors.full_messages_for(:name).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+
+  <%= f.submit 'Enviar'%>
+<% end %>
