@@ -1,6 +1,7 @@
 class PropertiesController < ApplicationController
   def show
-    @property = Property.find(params[:id])
+    id = params[:id]
+    @property = Property.find(id)
   end
   def new
     @property = Property.new
