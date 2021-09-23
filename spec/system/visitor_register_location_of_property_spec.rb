@@ -25,7 +25,7 @@ describe 'Visitor register location of property' do
     PropertyLocation.create({ name: 'Centro-Oeste'})
 
     visit root_path
-    click_on 'Cadastrar tipo de imóvel'
+    click_on 'Cadastrar região'
     fill_in 'Nome', with: 'Centro-Oeste'
     click_on 'Enviar'
 
