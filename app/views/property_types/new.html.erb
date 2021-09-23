@@ -1,9 +1,13 @@
-<h1>Cadastro do Tipo de Imóvel</h1>
 
 <%= form_with model: @property_type do |f| %>
   <div>
   <%= f.label :name, 'Nome'%>
   <%= f.text_field :name %>
   </div>
+
+  <% @property_type.errors.full_messages_for(:name).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+
   <%= f.submit 'Enviar'%>
 <% end %>
