@@ -1,5 +1,7 @@
 <h1>Região cadastrada.</h1>
 
 <h2>
-  <%= @property_location.name %>
+  <% @property_locations.each do |locations| %>
+    <p><%= locations.name %></p>
+  <% end %>
 </h2>

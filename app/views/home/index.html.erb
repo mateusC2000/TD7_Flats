@@ -12,10 +12,10 @@
 <% if @properties.empty? %>
   <h2><%= "Nenhum imóvel disponível" %></h2>
 <% else %>
-  <% @properties.each do |data| %>
-    <h2><%= link_to(data.title, property_path(data.id)) %></h2>
-    <h3><%= data.description %></h3>
-    <h3><%= "Quartos: #{data.rooms}" %></h3>
+  <% @properties.each do |property| %>
+    <h2><%= link_to(property.title, property_path(property.id)) %></h2>
+    <h3><%= property.description %></h3>
+    <h3><%= "Quartos: #{property.rooms}" %></h3>
   <% end %>
 <% end %>
 

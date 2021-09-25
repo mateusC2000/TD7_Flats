@@ -5,7 +5,7 @@
   </div>
 
   <% @property_location.errors.full_messages_for(:name).each do |message| %>
-    <div><%= message %></div>
+    <p><%= message %></p>
   <% end %>
 
   <%= f.submit 'Enviar'%>

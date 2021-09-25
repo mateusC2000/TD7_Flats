@@ -1,5 +1,7 @@
 <h1>Tipo de imóvel cadastrado.</h1>
 
 <h2>
-  <%= @property_type.name %>
+  <% @property_types.each do |type| %>
+    <p><%= type.name %></p>
+  <% end %>
 </h2>

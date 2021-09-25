@@ -1,10 +1,12 @@
 class PropertyLocationsController < ApplicationController
 
   def new
+    @property_locations = PropertyLocation.all
     @property_location = PropertyLocation.new
   end
 
   def show
+    @property_locations = PropertyLocation.all
     @property_location = PropertyLocation.find(params[:id])
   end
 
