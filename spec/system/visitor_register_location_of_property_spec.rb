@@ -11,7 +11,7 @@ describe 'Visitor register location of property' do
     expect(page).to have_content('Centro-Oeste')
   end
 
-  it 'successfully' do
+  it 'must not blank fields' do
     
     visit root_path
     click_on 'Cadastrar região'
@@ -21,7 +21,7 @@ describe 'Visitor register location of property' do
     expect(page).to have_content('Região não cadastrada, preencha todos os campos.')
   end
 
-  it 'successfully' do
+  it 'there must be no repeated names' do
     PropertyLocation.create({ name: 'Centro-Oeste'})
 
     visit root_path

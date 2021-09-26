@@ -11,7 +11,7 @@ describe 'Visitor register types of properties' do
     expect(page).to have_content('Apartamento')
   end
 
-  it 'successfully' do
+  it 'must not blank fields' do
     
     visit root_path
     click_on 'Cadastrar tipo de imóvel'
@@ -21,7 +21,7 @@ describe 'Visitor register types of properties' do
     expect(page).to have_content('Tipo de imóvel não cadastrado, preencha todos os campos')
   end
 
-  it 'successfully' do
+  it 'there must be no repeated names' do
     PropertyType.create({ name: 'Apartamento'})
 
     visit root_path
