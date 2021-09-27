@@ -14,6 +14,10 @@
     <%= f.collection_select :property_type_id, @property_types, :id, :name %>
   </div>
   <div>
+    <%= f.label :property_location_id, 'Região' %>
+    <%= f.collection_select :property_location_id, @property_locations, :id, :name %>
+  </div>
+  <div>
     <%= f.label :title, 'Título'%>
     <%= f.text_field :title %>
   </div>

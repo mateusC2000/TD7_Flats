@@ -6,10 +6,14 @@ describe 'Visitor register property' do
     #Arrange
     PropertyType.create!(name: 'Casa')
     PropertyType.create!(name: 'Apartamento')
+    PropertyLocation.create!(name: 'Centro-Oeste')
+    PropertyLocation.create!(name: 'Sudeste')
+
     #Act
     visit root_path
     click_on 'Cadastrar imóvel'
     select 'Casa', from: 'Tipo'
+    select 'Sudeste', from: 'Região'
     fill_in 'Título', with: 'Casa em Florianópolis'
     fill_in 'Descrição', with: 'Ótima casa perto da UFSC'
     fill_in 'Quartos', with: '3'
@@ -36,5 +40,4 @@ describe 'Visitor register property' do
     expect(page).to have_content('não pode ficar em branco', count: 3)
     expect(Property.count).to eq(0)
   end
-
 end
