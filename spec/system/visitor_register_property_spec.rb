@@ -4,9 +4,12 @@ describe 'Visitor register property' do
   
   it 'successfully' do
     #Arrange
+    PropertyType.create!(name: 'Casa')
+    PropertyType.create!(name: 'Apartamento')
     #Act
     visit root_path
     click_on 'Cadastrar imóvel'
+    select 'Casa', from: 'Tipo'
     fill_in 'Título', with: 'Casa em Florianópolis'
     fill_in 'Descrição', with: 'Ótima casa perto da UFSC'
     fill_in 'Quartos', with: '3'

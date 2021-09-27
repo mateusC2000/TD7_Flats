@@ -10,33 +10,37 @@
 
 <%= form_with model: @property do |f| %>
   <div>
-  <%= f.label :title, 'Título'%>
-  <%= f.text_field :title %>
+    <%= f.label :property_type_id, 'Tipo' %>
+    <%= f.collection_select :property_type_id, @property_types, :id, :name %>
   </div>
   <div>
-  <%= f.label :description, 'Descrição' %>
-  <%= f.text_field :description %>
+    <%= f.label :title, 'Título'%>
+    <%= f.text_field :title %>
   </div>
   <div>
-  <%= f.label :rooms, 'Quartos' %>
-  <%= f.number_field :rooms %>
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_field :description %>
   </div>
   <div>
-  <%= f.label :bathrooms, 'Banheiros' %>
-  <%= f.number_field :bathrooms %>
+    <%= f.label :rooms, 'Quartos' %>
+    <%= f.number_field :rooms %>
   </div>
   <div>
-  <%= f.label :daily_rate, 'Diária' %>
-  <%= f.number_field :daily_rate %>
+    <%= f.label :bathrooms, 'Banheiros' %>
+    <%= f.number_field :bathrooms %>
   </div>
   <div>
-  <%= f.label :pets, 'Aceita Pets' %>
-  <%= f.check_box :pets %>
+    <%= f.label :daily_rate, 'Diária' %>
+    <%= f.number_field :daily_rate %>
   </div>
   <div>
-  <%= f.label :parking_slot, 'Vaga de Estacionamento' %>
-  <%= f.check_box :parking_slot %>
+    <%= f.label :pets, 'Aceita Pets' %>
+    <%= f.check_box :pets %>
   </div>
-  <%= f.submit 'Enviar'%>
+  <div>
+    <%= f.label :parking_slot, 'Vaga de Estacionamento' %>
+    <%= f.check_box :parking_slot %>
+  </div>
+    <%= f.submit 'Enviar'%>
   
 <% end %>

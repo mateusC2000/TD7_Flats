@@ -4,6 +4,7 @@ class PropertyTypesController < ApplicationController
   end
 
   def new
+    @property_types = PropertyType.all
     @property_type = PropertyType.new
   end
 
