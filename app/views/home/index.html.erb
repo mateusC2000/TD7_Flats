@@ -1,3 +1,4 @@
+<header>
 <h1>Flats</h1>
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
 
@@ -8,6 +9,16 @@
 <nav>
 <%= link_to 'Cadastrar tipo de imóvel', new_property_type_path %>
 </nav>
+</header>
+
+<aside>
+<h2>Filtrar por tipo:</h2>
+<nav>
+  <% @property_types.each do |pt| %>
+    <%= link_to pt.name, property_type_path(pt.id) %>
+  <% end %>
+</nav>
+</aside>
 
 <% if @properties.empty? %>
   <h2><%= "Nenhum imóvel disponível" %></h2>

@@ -37,7 +37,7 @@ describe 'Visitor register property' do
     click_on 'Cadastrar imóvel'
     click_on 'Enviar'
 
-    expect(page).to have_content('não pode ficar em branco', count: 3)
+    expect(page).to have_content('não pode ficar em branco', count: 5)
     expect(Property.count).to eq(0)
   end
 end
