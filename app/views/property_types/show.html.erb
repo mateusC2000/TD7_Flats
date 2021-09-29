@@ -1,5 +1,3 @@
 <h1>Imóveis do tipo <%= @property_type.name %></h1>
 
-<% @property_type.properties.each do |p| %>
-  <%= p.title %>
-<% end %>]
+<%= render "partial_shared/preview", property: @property_type.properties%>

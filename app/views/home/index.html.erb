@@ -32,11 +32,7 @@
 <% if @properties.empty? %>
   <h2><%= "Nenhum imóvel disponível" %></h2>
 <% else %>
-  <% @properties.each do |property| %>
-    <h2><%= link_to(property.title, property_path(property.id)) %></h2>
-    <h3><%= property.description %></h3>
-    <h3><%= "Quartos: #{property.rooms}" %></h3>
-  <% end %>
+  <%= render "partial_shared/preview", property: @properties%>
 <% end %>
 
 <nav>

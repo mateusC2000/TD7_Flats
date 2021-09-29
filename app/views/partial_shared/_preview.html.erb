@@ -1,0 +1,5 @@
+<% property.each do |property| %>
+  <h2><%= link_to property.title, property %></h2>
+  <h3><%= property.description %></h3>
+  <h3> Quartos: <%= property.rooms %></h3>
+<% end %>
