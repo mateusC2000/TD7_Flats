@@ -4,14 +4,17 @@ describe 'Visitor register property' do
   
   it 'successfully' do
     #Arrange
+    property_owner = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
     PropertyType.create!(name: 'Casa')
     PropertyType.create!(name: 'Apartamento')
     PropertyLocation.create!(name: 'Centro-Oeste')
     PropertyLocation.create!(name: 'Sudeste')
 
     #Act
+    login_as property_owner, scope: :property_owner
+
     visit root_path
-    click_on 'Cadastrar imóvel'
+    click_on 'Cadastrar Imóvel'
     select 'Casa', from: 'Tipo'
     select 'Sudeste', from: 'Região'
     fill_in 'Título', with: 'Casa em Florianópolis'
@@ -33,8 +36,11 @@ describe 'Visitor register property' do
   end
 
   it 'and must fill all fields' do
+    property_owner = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+
+    login_as property_owner, scope: :property_owner
     visit root_path
-    click_on 'Cadastrar imóvel'
+    click_on 'Cadastrar Imóvel'
     click_on 'Enviar'
 
     expect(page).to have_content('Título não pode ficar em branco')
