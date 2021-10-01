@@ -1,0 +1,8 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      property_location: 'Tipo de Propriedade'
+    attributes:
+      property_location:
+        name: 'Nome'

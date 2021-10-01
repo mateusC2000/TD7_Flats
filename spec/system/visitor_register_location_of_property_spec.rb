@@ -18,7 +18,7 @@ describe 'Visitor register location of property' do
     fill_in 'Nome', with: ''
     click_on 'Enviar'
 
-    expect(page).to have_content('Região não cadastrada, preencha todos os campos.')
+    expect(page).to have_content('Nome não pode ficar em branco')
   end
 
   it 'there must be no repeated names' do
@@ -29,7 +29,7 @@ describe 'Visitor register location of property' do
     fill_in 'Nome', with: 'Centro-Oeste'
     click_on 'Enviar'
 
-    expect(page).to have_content('Região já existente.')
+    expect(page).to have_content('Nome já está em uso')
   end
 
 end
