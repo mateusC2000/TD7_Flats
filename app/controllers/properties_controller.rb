@@ -25,8 +25,12 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id])
-    @property.update(property_params)
-    redirect_to @property
+    if @property.update(property_params)
+      redirect_to @property
+    else
+      flash[:alert] = 'Você deve preencher todos os campos.'
+      render :edit
+    end
   end
 
   private

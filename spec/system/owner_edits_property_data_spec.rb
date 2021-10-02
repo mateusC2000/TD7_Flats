@@ -8,8 +8,7 @@ describe 'Owner edits property data' do
     Property.create!({ title: 'Casa com quintal em Copacabana',
                        description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                        rooms: 3, bathrooms: 2, daily_rate: 200, parking_slot: true, pets: false,
-                       property_type: property_type, property_location: region
-})
+                       property_type: property_type, property_location: region})
 
     # simula a ação do usuário
     login_as property_owner, scope: :property_owner
@@ -38,4 +37,33 @@ describe 'Owner edits property data' do
     expect(page).to have_content('Estacionamento: Sim')
   end
 
+  it 'and must fill in all fields' do
+    property_owner = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+    property_type = PropertyType.create!(name: 'Casa')
+    region = PropertyLocation.create!(name: 'Sudeste')
+    Property.create!({ title: 'Casa com quintal em Copacabana',
+                       description: 'Excelente casa, recém reformada com 2 vagas de garagem',
+                       rooms: 3, bathrooms: 2, daily_rate: 200, parking_slot: true, pets: false,
+                       property_type: property_type, property_location: region})
+
+    # simula a ação do usuário
+    login_as property_owner, scope: :property_owner
+    visit root_path
+    click_on 'Casa com quintal em Copacabana'
+    click_on 'Editar'
+
+    select 'Casa', from: 'Tipo'
+    select 'Sudeste', from: 'Região'
+    fill_in 'Título', with: ''
+    fill_in 'Descrição', with: ''
+    fill_in 'Quartos', with: ''
+    fill_in 'Banheiros', with: ''
+    fill_in 'Diária', with: ''
+    check 'Aceita Pets'
+    check 'Vaga de Estacionamento'
+
+    click_on 'Enviar'
+
+    expect(page).to have_content('Você deve preencher todos os campos.')
+  end
 end
