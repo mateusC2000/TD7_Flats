@@ -1,9 +1,11 @@
 class PropertiesController < ApplicationController
 
   before_action :set_properties, only: %i(new create edit update)
+  before_action :set_property_types, only: %i(new create edit update)
+  before_action :set_property_locations, only: %i(new create edit update)
+  before_action :set_property, only: %i(show edit update)
 
   def show
-    @property = Property.find(params[:id])
   end
 
   def new
@@ -13,18 +15,16 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     if @property.save
-      redirect_to @property
+      redirect_to @property, notice: 'Propriedade criada com sucesso!'
     else
       render :new
     end
   end
 
   def edit
-    @property = Property.find(params[:id])
   end
 
   def update
-    @property = Property.find(params[:id])
     if @property.update(property_params)
       redirect_to @property
     else
@@ -41,8 +41,18 @@ class PropertiesController < ApplicationController
   end
 
   def set_properties
-    @property_types = PropertyType.all
-    @property_locations = PropertyLocation.all
     @properties = Property.all
+  end
+  
+  def set_property_types
+    @property_types = PropertyType.all
+  end
+
+  def set_property_locations
+    @property_locations = PropertyLocation.all
+  end
+
+  def set_property
+    @property = Property.find(params[:id])
   end
 end

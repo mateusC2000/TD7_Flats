@@ -1,3 +1,11 @@
+<% if @property.errors.any? %>
+  <ul>
+    <% @property.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @property do |f| %>
   <div>
     <%= f.label :property_type_id, 'Tipo' %>

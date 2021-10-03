@@ -1,11 +1,3 @@
 <h1>Cadastrar Imóvel</h1>
 
-<% if @property.errors.any? %>
-  <ul>
-    <% @property.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <%= render 'form', property: @property %>
