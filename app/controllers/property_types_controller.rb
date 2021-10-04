@@ -1,7 +1,7 @@
 class PropertyTypesController < ApplicationController
+
   def show
-    id = params[:id]
-    @property_type = PropertyType.find(id)
+    @property_type = PropertyType.find(params[:id])
   end
 
   def new
@@ -11,7 +11,7 @@ class PropertyTypesController < ApplicationController
   def create
     @property_type = PropertyType.new(property_type_params)
     if @property_type.save
-      redirect_to @property_type
+      redirect_to @property_type, notice: t('.success')
     else
       render :new
     end

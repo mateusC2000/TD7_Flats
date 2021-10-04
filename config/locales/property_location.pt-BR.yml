@@ -2,7 +2,12 @@
 pt-BR:
   activerecord:
     models:
-      property_location: 'Tipo de Propriedade'
+      property_location: 'Região'
     attributes:
       property_location:
         name: 'Nome'
+  property_locations:
+    create:
+      success: 'Região cadastrada com sucesso!'
+    new:
+      submit: 'Cadastrar Região'

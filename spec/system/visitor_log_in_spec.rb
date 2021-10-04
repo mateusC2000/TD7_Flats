@@ -17,7 +17,7 @@ describe 'Visitor log in' do
       expect(page).to have_content(property_owner.email)
       expect(page).to have_link('Logout')
       expect(page).not_to have_link('Entrar')
-      expect(page).to have_link('Cadastrar Imóvel')
+      expect(page).to have_link('Cadastrar Propriedade')
     end
 
     it 'and logs out' do

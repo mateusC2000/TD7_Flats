@@ -6,3 +6,7 @@ pt-BR:
     attributes:
       property_type:
         name: 'Nome'
+  property_types:
+    create:
+      success: 'Tipo de ímovel cadastrado com sucesso!'
+      

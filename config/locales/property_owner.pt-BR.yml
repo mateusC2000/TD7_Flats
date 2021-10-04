@@ -6,3 +6,7 @@ pt-BR:
     attributes:
       property_owner:
         password: 'Senha' 
+  property_owners:
+    sessions:
+      new:
+        login: 'Entrar'

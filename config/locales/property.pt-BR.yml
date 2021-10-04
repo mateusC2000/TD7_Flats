@@ -10,3 +10,19 @@ pt-BR:
         rooms: 'Quartos'
         bathrooms: 'Banheiros'
         daily_rate: 'Diária'
+        property_type_id: 'Tipo'
+        property_location_id: 'Região'
+        pets: 'Aceita Pets'
+        parking_slot: 'Vaga de Estacionamento'
+  properties:
+    create:
+      success: 'Propriedade criada com sucesso!'
+    update:
+      success: Propriedade atualizada com sucesso'
+    edit:
+      title: 'Editar Propriedade'
+    new:
+      title: 'Cadastrar Propriedade'
+    show:
+      back: 'Voltar'
+      edit: 'Editar'

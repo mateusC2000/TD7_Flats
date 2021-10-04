@@ -1,9 +1,8 @@
 class PropertiesController < ApplicationController
 
-  before_action :set_properties, only: %i(new create edit update)
-  before_action :set_property_types, only: %i(new create edit update)
-  before_action :set_property_locations, only: %i(new create edit update)
-  before_action :set_property, only: %i(show edit update)
+  before_action :set_property_types, only: %i[new create edit update]
+  before_action :set_property_locations, only: %i[new create edit update]
+  before_action :set_property, only: %i[show edit update]
 
   def show
   end
@@ -15,7 +14,7 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     if @property.save
-      redirect_to @property, notice: 'Propriedade criada com sucesso!'
+      redirect_to @property, notice: t('.success')
     else
       render :new
     end
@@ -26,9 +25,8 @@ class PropertiesController < ApplicationController
 
   def update
     if @property.update(property_params)
-      redirect_to @property
+      redirect_to @property, notice: t('.success')
     else
-      flash[:alert] = 'Você deve preencher todos os campos.'
       render :edit
     end
   end
@@ -40,10 +38,6 @@ class PropertiesController < ApplicationController
                                      :daily_rate, :pets, :parking_slot, :property_type_id, :property_location_id)
   end
 
-  def set_properties
-    @properties = Property.all
-  end
-  
   def set_property_types
     @property_types = PropertyType.all
   end

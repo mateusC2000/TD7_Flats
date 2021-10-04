@@ -12,7 +12,7 @@
   <body>
     <nav>
       <% if property_owner_signed_in? %>
-        <p><%= link_to 'Cadastrar Imóvel', new_property_path %></p>
+        <p><%= link_to 'Cadastrar Propriedade', new_property_path %></p>
         <p><%= current_property_owner.email %></p>
         <p><%= link_to 'Logout', destroy_property_owner_session_path, method: :delete %></p>
       <% else %>

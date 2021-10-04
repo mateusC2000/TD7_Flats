@@ -1,5 +1,4 @@
 class PropertyLocationsController < ApplicationController
-
   def new
     @property_location = PropertyLocation.new
   end
@@ -11,7 +10,7 @@ class PropertyLocationsController < ApplicationController
   def create
     @property_location = PropertyLocation.new(property_location_params)
     if @property_location.save
-      redirect_to @property_location
+      redirect_to @property_location, notice: t('.success')
     else
       render :new
     end

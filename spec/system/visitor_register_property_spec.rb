@@ -14,7 +14,7 @@ describe 'Visitor register property' do
     login_as property_owner, scope: :property_owner
 
     visit root_path
-    click_on 'Cadastrar Imóvel'
+    click_on 'Cadastrar Propriedade'
     select 'Casa', from: 'Tipo'
     select 'Sudeste', from: 'Região'
     fill_in 'Título', with: 'Casa em Florianópolis'
@@ -24,7 +24,7 @@ describe 'Visitor register property' do
     fill_in 'Diária', with: 200
     check 'Aceita Pets'
     check 'Vaga de Estacionamento'
-    click_on 'Enviar'
+    click_on 'Criar Propriedade'
 
     expect(page).to have_content('Casa em Florianópolis')
     expect(page).to have_content('Ótima casa perto da UFSC')
@@ -41,8 +41,8 @@ describe 'Visitor register property' do
 
     login_as property_owner, scope: :property_owner
     visit root_path
-    click_on 'Cadastrar Imóvel'
-    click_on 'Enviar'
+    click_on 'Cadastrar Propriedade'
+    click_on 'Criar Propriedade'
 
     expect(page).to have_content('Título não pode ficar em branco')
     expect(page).to have_content('Descrição não pode ficar em branco')

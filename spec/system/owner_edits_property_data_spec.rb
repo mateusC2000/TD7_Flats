@@ -26,7 +26,7 @@ describe 'Owner edits property data' do
     check 'Aceita Pets'
     check 'Vaga de Estacionamento'
 
-    click_on 'Enviar'
+    click_on 'Atualizar Propriedade'
 
     expect(page).to have_content('Casa em Florianópolis')
     expect(page).to have_content('Excelente casa, recém reformada com 2 vagas de garagem')
@@ -35,6 +35,7 @@ describe 'Owner edits property data' do
     expect(page).to have_content('Diária: R$ 300,00')
     expect(page).to have_content('Aceita Pets: Sim')
     expect(page).to have_content('Estacionamento: Sim')
+    expect(page).to have_content('Propriedade atualizada com sucesso')
   end
 
   it 'and must fill in all fields' do
@@ -62,8 +63,8 @@ describe 'Owner edits property data' do
     check 'Aceita Pets'
     check 'Vaga de Estacionamento'
 
-    click_on 'Enviar'
+    click_on 'Atualizar Propriedade'
 
-    expect(page).to have_content('Você deve preencher todos os campos.')
+    expect(page).to have_content('não pode ficar em branco', count: 5)
   end
 end
