@@ -1,5 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe PropertyType, type: :model do
- 
+describe PropertyType do
+  it { should have_many(:properties) }
+
+  it { should validate_uniqueness_of(:name).with_message('já está em uso') }
+  it { should validate_presence_of(:name).with_message('não pode ficar em branco') }
 end

@@ -1,20 +1,16 @@
 require 'rails_helper'
 
 describe Property do
-  context 'validations' do
-    context 'present' do
-      let(:property) { subject }
-      it 'title must be present' do
-        property.valid?
-        expect(property.errors.full_messages_for(:title)).to include('Título não pode ficar em branco')
-      end
+  it { should belong_to(:property_type) }
+  it { should belong_to(:property_location) }
+  
+  it { should validate_presence_of(:title).with_message('não pode ficar em branco') }
+  it { should validate_presence_of(:description).with_message('não pode ficar em branco') }
+  it { should validate_presence_of(:rooms).with_message('não pode ficar em branco') }
+  it { should validate_presence_of(:bathrooms).with_message('não pode ficar em branco') }
+  it { should validate_presence_of(:daily_rate).with_message('não pode ficar em branco') }
 
-      it 'description must be present' do
-        property.valid?
-        expect(
-          property.errors.full_messages_for(:description)
-        ).to include('Descrição não pode ficar em branco')
-      end
-    end
-  end
+  it { should validate_numericality_of(:rooms).only_integer.is_greater_than_or_equal_to(0) }
+  it { should validate_numericality_of(:bathrooms).only_integer.is_greater_than(0) }
+  it { should validate_numericality_of(:daily_rate).is_greater_than(0) }
 end
