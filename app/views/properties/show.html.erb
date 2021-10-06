@@ -9,19 +9,31 @@
   <h3><%= "#{@property.class.human_attribute_name(:bathrooms)}: " "#{@property.bathrooms}" %></h3>
   
   <% if @property.pets? %>
-    <h3><%= "#{@property.class.human_attribute_name(:pets)}: "%> Sim</h3>
+    <h3><%= "#{@property.class.human_attribute_name(:pets)}: #{t('.true')}"%></h3>
   <% else %>
-    <h3><%= "#{@property.class.human_attribute_name(:pets)}: "%> Não</h3>
+    <h3><%= "#{@property.class.human_attribute_name(:pets)}: #{t('.false')}"%></h3>
   <% end %>
 
   <% if @property.parking_slot? %>
-    <h3><%= "#{@property.class.human_attribute_name(:parking_slot)}: "%> Sim </h3>
+    <h3><%= "#{@property.class.human_attribute_name(:parking_slot)}: #{t('.true')}"%></h3>
   <% else %>
-    <h3><%= "#{@property.class.human_attribute_name(:parking_slot)}: "%> Não </h3>
+    <h3><%= "#{@property.class.human_attribute_name(:parking_slot)}: #{t('.false')}"%></h3>
   <% end %>
 
   
   <h3><%= "#{@property.class.human_attribute_name(:daily_rate)}: #{number_to_currency(@property.daily_rate)}" %></h3>
+
+ <h3>Verificar datas</h3>
+<%= form_with model: [@property, @property_reservation] do |f| %>
+  <%= f.label :start_date, 'Data de início' %>
+  <%= f.date_field :start_date %>
+  <%= f.label :end_date, 'Data de término' %>
+  <%= f.date_field :end_date %>
+  <%= f.label :guests, 'Quantidade de pessoas' %>
+  <%= f.number_field :guests, step: 1, min: 1 %>
+  <%= f.submit 'Enviar Reserva' %>
+<% end %>
+
 
 <%= link_to(t('.back'), root_path) %>
 <%= link_to(t('.edit'), edit_property_path) %>

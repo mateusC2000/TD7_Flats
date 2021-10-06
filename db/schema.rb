@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_01_183153) do
+ActiveRecord::Schema.define(version: 2021_10_06_184025) do
 
   create_table "properties", force: :cascade do |t|
     t.string "title"
@@ -24,7 +24,9 @@ ActiveRecord::Schema.define(version: 2021_10_01_183153) do
     t.decimal "daily_rate"
     t.integer "property_type_id", null: false
     t.integer "property_location_id", null: false
+    t.integer "property_owner_id", null: false
     t.index ["property_location_id"], name: "index_properties_on_property_location_id"
+    t.index ["property_owner_id"], name: "index_properties_on_property_owner_id"
     t.index ["property_type_id"], name: "index_properties_on_property_type_id"
   end
 
@@ -46,12 +48,40 @@ ActiveRecord::Schema.define(version: 2021_10_01_183153) do
     t.index ["reset_password_token"], name: "index_property_owners_on_reset_password_token", unique: true
   end
 
+  create_table "property_reservations", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "guests"
+    t.decimal "total_value"
+    t.integer "property_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_property_reservations_on_property_id"
+    t.index ["user_id"], name: "index_property_reservations_on_user_id"
+  end
+
   create_table "property_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "properties", "property_locations"
+  add_foreign_key "properties", "property_owners"
   add_foreign_key "properties", "property_types"
+  add_foreign_key "property_reservations", "properties"
+  add_foreign_key "property_reservations", "users"
 end
