@@ -26,3 +26,8 @@ pt-BR:
     show:
       back: 'Voltar'
       edit: 'Editar'
+      true: 'Sim'
+      false: 'Não'
+    my_properties:
+      vazio: 'Você ainda não cadastrou imóveis'
+      primeiro: 'Cadastre seu primeiro imóvel agora'
