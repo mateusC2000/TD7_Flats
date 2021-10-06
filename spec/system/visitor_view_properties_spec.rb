@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'Visitor visit homepage' do
   it 'and view properties' do
     #Arrange => Preparar (os dados)
+    teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
     property_type = PropertyType.create!(name: 'Casa')
     other_property_type = PropertyType.create!(name: 'Apartamento')
     region = PropertyLocation.create!(name: 'Norte')
@@ -11,16 +12,17 @@ describe 'Visitor visit homepage' do
     Property.create!({ title: 'Casa com quintal em Copacabana', 
                        description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                        rooms: 3, bathrooms: 2, daily_rate: 200, parking_slot: true,
-                       property_type: property_type, property_location: other_region
+                       property_type: property_type, property_location: other_region, property_owner: teu
                     })
 
     Property.create!({ title: 'Cobertura em Manaus',
                        description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
                        rooms: 5, bathrooms: 2, daily_rate: 200, parking_slot: false,
-                       property_type: other_property_type, property_location: region
+                       property_type: other_property_type, property_location: region, property_owner: teu
                     })
 
     #Act => Agir (executar a funcionalidade)
+    login_as teu, scope: :property_owner
     visit root_path
 
     #Assert => Garantir (que algo aconteceu ou NAO aconteceu)
@@ -44,6 +46,7 @@ describe 'Visitor visit homepage' do
 
   it 'and view property details' do
     #Arrange => Preparar (os dados)
+    teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
     property_type = PropertyType.create!(name: 'Casa')
     other_property_type = PropertyType.create!(name: 'Apartamento')
     region = PropertyLocation.create!(name: 'Norte')
@@ -52,16 +55,17 @@ describe 'Visitor visit homepage' do
     property = Property.create!({ title: 'Casa com quintal em Copacabana', 
                                   description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                                   rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500,
-                                 property_type: property_type, property_location: other_region
+                                 property_type: property_type, property_location: other_region, property_owner: teu
                     })
 
     Property.create!({ title: 'Cobertura em Manaus',
                     description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
                     rooms: 5, parking_slot: false, bathrooms: 2, pets: true, daily_rate: 500,
-                    property_type: other_property_type, property_location: region
+                    property_type: other_property_type, property_location: region, property_owner: teu
                   })
 
     #Act => Agir (executar a funcionalidade)
+    login_as teu, scope: :property_owner
     visit root_path
     click_on 'Casa com quintal em Copacabana'
 
@@ -77,6 +81,7 @@ describe 'Visitor visit homepage' do
   end
 
   it 'and view property details and return to home page' do
+    teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
     property_type = PropertyType.create!(name: 'Casa')
     other_property_type = PropertyType.create!(name: 'Apartamento')
     region = PropertyLocation.create!(name: 'Norte')
@@ -85,15 +90,16 @@ describe 'Visitor visit homepage' do
     Property.create!({ title: 'Casa com quintal em Copacabana',
                        description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                        rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500,
-                       property_type: property_type, property_location: other_region
+                       property_type: property_type, property_location: other_region, property_owner: teu
                     })
 
     Property.create!({ title: 'Cobertura em Manaus',
                        description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
                        rooms: 5, parking_slot: false, bathrooms: 2, pets: true, daily_rate: 500,
-                       property_type: other_property_type, property_location: region
+                       property_type: other_property_type, property_location: region, property_owner: teu
                     })
     #Act => Agir (executar a funcionalidade)
+    login_as teu, scope: :property_owner
     visit root_path
     click_on 'Casa com quintal em Copacabana'
     click_on 'Voltar'

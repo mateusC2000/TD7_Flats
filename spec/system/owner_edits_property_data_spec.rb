@@ -2,16 +2,16 @@ require 'rails_helper'
 
 describe 'Owner edits property data' do
   it 'sucessfully' do
-    property_owner = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+    teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
     property_type = PropertyType.create!(name: 'Casa')
     region = PropertyLocation.create!(name: 'Sudeste')
     Property.create!({ title: 'Casa com quintal em Copacabana',
                        description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                        rooms: 3, bathrooms: 2, daily_rate: 200, parking_slot: true, pets: false,
-                       property_type: property_type, property_location: region})
+                       property_type: property_type, property_location: region, property_owner: teu})
 
     # simula a ação do usuário
-    login_as property_owner, scope: :property_owner
+    login_as teu, scope: :property_owner
     visit root_path
     click_on 'Casa com quintal em Copacabana'
     click_on 'Editar'
@@ -39,16 +39,16 @@ describe 'Owner edits property data' do
   end
 
   it 'and must fill in all fields' do
-    property_owner = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+    teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
     property_type = PropertyType.create!(name: 'Casa')
     region = PropertyLocation.create!(name: 'Sudeste')
     Property.create!({ title: 'Casa com quintal em Copacabana',
                        description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                        rooms: 3, bathrooms: 2, daily_rate: 200, parking_slot: true, pets: false,
-                       property_type: property_type, property_location: region})
+                       property_type: property_type, property_location: region, property_owner: teu})
 
     # simula a ação do usuário
-    login_as property_owner, scope: :property_owner
+    login_as teu, scope: :property_owner
     visit root_path
     click_on 'Casa com quintal em Copacabana'
     click_on 'Editar'
