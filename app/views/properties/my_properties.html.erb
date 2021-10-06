@@ -1,0 +1,8 @@
+<h1>Meus Imóveis</h1>
+
+<% if @properties.empty? %>
+  <h2><%= t('.vazio') %></h2>
+  <h3><%= link_to(t('.primeiro'), new_property_path) %></h3>
+<% else %>
+  <%= render "partial_shared/preview", property: @properties%>
+<% end %>
