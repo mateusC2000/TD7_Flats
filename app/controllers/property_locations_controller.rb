@@ -1,4 +1,5 @@
 class PropertyLocationsController < ApplicationController
+  before_action :authenticate_property_owner!, only: %i[new create]
   def new
     @property_location = PropertyLocation.new
   end

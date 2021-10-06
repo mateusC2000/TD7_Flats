@@ -1,5 +1,5 @@
 class PropertyTypesController < ApplicationController
-
+  before_action :authenticate_property_owner!, only: %i[new create]
   def show
     @property_type = PropertyType.find(params[:id])
   end
