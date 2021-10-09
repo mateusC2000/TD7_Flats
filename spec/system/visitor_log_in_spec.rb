@@ -35,4 +35,23 @@ describe 'Visitor log in' do
     end
   end
 
+  # context 'as user' do
+  #   it 'successfully' do
+  #     user = User.create!(email: 'jane@doe.com.br', password: '1234567')
+
+  #     visit root_path
+  #     click_on 'Entrar'
+  #     fill_in 'Email', with: user.email
+  #     fill_in 'Senha', with: user.password
+  #     within 'form' do
+  #       click_on 'Entrar'
+  #     end
+
+  #     expect(page).to have_content('Login efetuado com sucesso!')
+  #     expect(page).to have_content(user.email)
+  #     expect(page).to have_link('Logout')
+  #     expect(page).not_to have_link('Entrar')
+  #     expect(page).not_to have_link('Cadastrar Propriedade')
+  #   end
+  # end
 end

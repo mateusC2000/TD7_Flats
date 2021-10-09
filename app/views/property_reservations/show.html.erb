@@ -1,8 +1,8 @@
 <h3>Reserva do imóvel <%= @property_reservation.property.title %></h3>
   
-  <dd><%= l @property_reservation.start_date %>
+  <dd><%= l(@property_reservation.start_date) %>
   <dt>Data de término</dt>
-  <dd><%= l @property_reservation.end_date %></dd>
+  <dd><%= l(@property_reservation.end_date) %></dd>
   <dt>Quantidade de pessoas</dt>
   <dd><%= @property_reservation.guests %></dd>
   <dt>Valor total</dt>

@@ -1,0 +1,12 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      user: 'Usuário'
+    attributes:
+      user:
+        password: 'Senha' 
+  users:
+    sessions:
+      new:
+        login: 'Entrar'
