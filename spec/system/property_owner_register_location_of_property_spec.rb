@@ -28,7 +28,7 @@ describe 'Property owner register location of property' do
 
   it 'there must be no repeated names' do
     teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
-    PropertyLocation.create({ name: 'Centro-Oeste'})
+    PropertyLocation.create({ name: 'Centro-Oeste' })
 
     login_as teu, scope: :property_owner
     visit root_path

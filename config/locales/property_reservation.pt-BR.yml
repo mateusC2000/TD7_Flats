@@ -1,0 +1,10 @@
+---
+pt-BR:
+  activerecord:
+    attributes:    
+        property_reservation:
+          statuses:
+            pending: 'Pendente'
+            accepted: 'Aceita'
+            rejected: 'Recusada'
+      

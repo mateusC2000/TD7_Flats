@@ -13,7 +13,6 @@ describe 'User view own profile' do
     end
     click_on 'peter@doe.com.br'
 
-
     expect(page).to have_content 'Meu Perfil'
     expect(page).to have_content 'peter@doe.com.br'
     expect(current_path).to eq my_profile_path

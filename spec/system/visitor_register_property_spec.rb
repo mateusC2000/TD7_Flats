@@ -1,16 +1,15 @@
 require 'rails_helper'
 
 describe 'Visitor register property' do
-  
   it 'successfully' do
-    #Arrange
+    # Arrange
     property_owner = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
     PropertyType.create!(name: 'Casa')
     PropertyType.create!(name: 'Apartamento')
     PropertyLocation.create!(name: 'Centro-Oeste')
     PropertyLocation.create!(name: 'Sudeste')
 
-    #Act
+    # Act
     login_as property_owner, scope: :property_owner
 
     visit root_path

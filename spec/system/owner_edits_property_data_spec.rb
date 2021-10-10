@@ -8,7 +8,7 @@ describe 'Owner edits property data' do
     Property.create!({ title: 'Casa com quintal em Copacabana',
                        description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                        rooms: 3, bathrooms: 2, daily_rate: 200, parking_slot: true, pets: false,
-                       property_type: property_type, property_location: region, property_owner: teu})
+                       property_type: property_type, property_location: region, property_owner: teu })
 
     # simula a ação do usuário
     login_as teu, scope: :property_owner
@@ -45,7 +45,7 @@ describe 'Owner edits property data' do
     Property.create!({ title: 'Casa com quintal em Copacabana',
                        description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                        rooms: 3, bathrooms: 2, daily_rate: 200, parking_slot: true, pets: false,
-                       property_type: property_type, property_location: region, property_owner: teu})
+                       property_type: property_type, property_location: region, property_owner: teu })
 
     # simula a ação do usuário
     login_as teu, scope: :property_owner

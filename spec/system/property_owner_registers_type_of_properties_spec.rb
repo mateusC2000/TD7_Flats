@@ -29,7 +29,7 @@ describe 'Property owner register types of properties' do
   it 'there must be no repeated names' do
     teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
 
-    PropertyType.create({ name: 'Apartamento'})
+    PropertyType.create({ name: 'Apartamento' })
 
     login_as teu, scope: :property_owner
     visit root_path
