@@ -30,8 +30,8 @@
       <h3>Data de Início: <%= l(reserve.start_date) %></h3>
       <h3>Data de Saída: <%= l(reserve.end_date) %></h3>
       <h3>Total de Pessoas: <%= reserve.guests %></h3>
-      <h3>Status: <%= reserve.class.human_enum_name(:status, reserve.status) %>></h3>
-      <%= button_to 'Aceitar Reserva', accept_property_reservation_path(reserve)%>
+      <h3>Status: <%= reserve.class.human_enum_name(:status, reserve.status) %></h3>
+      <%= button_to 'Aceitar Reserva', accept_property_reservation_path(reserve) %>
     <% end %>
 <% elsif user_signed_in? %>
   <h3>Verificar datas</h3>
