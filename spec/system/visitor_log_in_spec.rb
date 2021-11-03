@@ -37,14 +37,14 @@ describe 'Visitor log in' do
 
   # context 'as user' do
   #   it 'successfully' do
-  #     user = User.create!(email: 'jane@doe.com.br', password: '1234567')
+  #     user = User.create!(email: 'kurt@doe.com.br', password: '1234567')
 
   #     visit root_path
   #     click_on 'Entrar'
   #     fill_in 'Email', with: user.email
   #     fill_in 'Senha', with: user.password
   #     within 'form' do
-  #       click_on 'Entrar'
+  #       click_on 'Entrar como locador'
   #     end
 
   #     expect(page).to have_content('Login efetuado com sucesso!')
