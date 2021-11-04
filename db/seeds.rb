@@ -9,7 +9,7 @@ johns_property = Property.create!(title: 'Apartamento Novo',
 
 andrew = User.create!(email: 'andrew@doe.com.br', password: '123456')
 
-PropertyReservation.create!(start_date: '2021-10-30', end_date: '2021-11-05',
+PropertyReservation.create!(start_date: '2021-12-30', end_date: '2021-12-31',
                             guests: 6, property: johns_property, user: andrew)
 
 p 'Banco de dados populados com sucesso!!'

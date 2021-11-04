@@ -1,4 +1,3 @@
 class UsersController < ApplicationController
-  def my_profile
-  end
+  def my_profile; end
 end

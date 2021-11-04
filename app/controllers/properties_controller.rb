@@ -1,6 +1,5 @@
 class PropertiesController < ApplicationController
-
-  before_action :authenticate_property_owner!, only: [:new, :create]
+  before_action :authenticate_property_owner!, only: %i[new create]
   before_action :set_property_types, only: %i[new create edit update]
   before_action :set_property_locations, only: %i[new create edit update]
   before_action :set_property, only: %i[show edit update]
@@ -23,8 +22,7 @@ class PropertiesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @property.update(property_params)

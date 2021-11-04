@@ -15,7 +15,6 @@ class PropertyTypesController < ApplicationController
     else
       render :new
     end
-
   end
 
   private
@@ -23,5 +22,4 @@ class PropertyTypesController < ApplicationController
   def property_type_params
     params.require(:property_type).permit(:name)
   end
-
 end

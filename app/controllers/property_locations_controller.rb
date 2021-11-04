@@ -22,5 +22,4 @@ class PropertyLocationsController < ApplicationController
   def property_location_params
     params.require(:property_location).permit(:name)
   end
-
 end

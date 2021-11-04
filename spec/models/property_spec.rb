@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Property do
   it { should belong_to(:property_type) }
   it { should belong_to(:property_location) }
-  
+
   it { should validate_presence_of(:title).with_message('não pode ficar em branco') }
   it { should validate_presence_of(:description).with_message('não pode ficar em branco') }
   it { should validate_presence_of(:rooms).with_message('não pode ficar em branco') }
