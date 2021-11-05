@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Visitor log in' do
   context 'as property owner' do
     it 'successfully' do
-      teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+      teu = create(:property_owner)
 
       visit root_path
       click_on 'Entrar'
@@ -21,7 +21,7 @@ describe 'Visitor log in' do
     end
 
     it 'and logs out' do
-      teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+      teu = create(:property_owner)
 
       login_as teu, scope: :property_owner
       visit root_path
@@ -34,24 +34,4 @@ describe 'Visitor log in' do
       expect(page).to_not have_link('Cadastrar Imóvel')
     end
   end
-
-  # context 'as user' do
-  #   it 'successfully' do
-  #     user = User.create!(email: 'kurt@doe.com.br', password: '1234567')
-
-  #     visit root_path
-  #     click_on 'Entrar'
-  #     fill_in 'Email', with: user.email
-  #     fill_in 'Senha', with: user.password
-  #     within 'form' do
-  #       click_on 'Entrar como locador'
-  #     end
-
-  #     expect(page).to have_content('Login efetuado com sucesso!')
-  #     expect(page).to have_content(user.email)
-  #     expect(page).to have_link('Logout')
-  #     expect(page).not_to have_link('Entrar')
-  #     expect(page).not_to have_link('Cadastrar Propriedade')
-  #   end
-  # end
 end

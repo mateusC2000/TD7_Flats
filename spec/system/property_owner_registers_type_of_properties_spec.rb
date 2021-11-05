@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Property owner register types of properties' do
   it 'successfully' do
-    teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+    teu = create(:property_owner)
 
     login_as teu, scope: :property_owner
     visit root_path
@@ -15,7 +15,7 @@ describe 'Property owner register types of properties' do
   end
 
   it 'must not blank fields' do
-    teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+    teu = create(:property_owner)
 
     login_as teu, scope: :property_owner
     visit root_path
@@ -27,9 +27,8 @@ describe 'Property owner register types of properties' do
   end
 
   it 'there must be no repeated names' do
-    teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
-
-    PropertyType.create({ name: 'Apartamento' })
+    teu = create(:property_owner)
+    create(:property_type, name: 'Apartamento')
 
     login_as teu, scope: :property_owner
     visit root_path

@@ -2,15 +2,13 @@ require 'rails_helper'
 
 describe 'user books property' do
   it 'successfully' do
-    property_type = PropertyType.create!(name: 'Apartamento')
-    property_location = PropertyLocation.create!(name: 'Sul')
-    property_owner = PropertyOwner.create!(email: 'john@doe.com.br', password: '123456')
-    property = Property.create!(title: 'Apartamento Novo',
-                                description: 'Um apartamento legal',
-                                rooms: 3, bathrooms: 2, pets: true, daily_rate: 100,
-                                property_type: property_type, property_location: property_location,
-                                property_owner: property_owner)
-    user = User.create!(email: 'jane@doe.com.br', password: '123456')
+    apartamento = create(:property_type, name: 'Apartamento')
+    sul = create(:property_location, name: 'Sul')
+    john = create(:property_owner)
+    property = create(:property, property_type: apartamento, property_location: sul,
+                      property_owner: john, daily_rate: 100)
+    
+    user = create(:user)
 
     login_as user, scope: :user
     visit root_path

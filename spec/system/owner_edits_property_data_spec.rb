@@ -2,22 +2,19 @@ require 'rails_helper'
 
 describe 'Owner edits property data' do
   it 'sucessfully' do
-    teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
-    property_type = PropertyType.create!(name: 'Casa')
-    region = PropertyLocation.create!(name: 'Sudeste')
-    Property.create!({ title: 'Casa com quintal em Copacabana',
-                       description: 'Excelente casa, recém reformada com 2 vagas de garagem',
-                       rooms: 3, bathrooms: 2, daily_rate: 200, parking_slot: true, pets: false,
-                       property_type: property_type, property_location: region, property_owner: teu })
+    teu = create(:property_owner)
+    casa = create(:property_type, name: 'Casa')
+    sul = create(:property_location, name: 'Sul')
+    create(:property, property_owner: teu, property_type: casa,
+           property_location: sul, title: 'Casa com quintal em Copacabana')
 
-    # simula a ação do usuário
     login_as teu, scope: :property_owner
     visit root_path
     click_on 'Casa com quintal em Copacabana'
     click_on 'Editar'
 
     select 'Casa', from: 'Tipo'
-    select 'Sudeste', from: 'Região'
+    select 'Sul', from: 'Região'
     fill_in 'Título', with: 'Casa em Florianópolis'
     fill_in 'Descrição', with: 'Excelente casa, recém reformada com 2 vagas de garagem'
     fill_in 'Quartos', with: '2'
@@ -39,22 +36,19 @@ describe 'Owner edits property data' do
   end
 
   it 'and must fill in all fields' do
-    teu = PropertyOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
-    property_type = PropertyType.create!(name: 'Casa')
-    region = PropertyLocation.create!(name: 'Sudeste')
-    Property.create!({ title: 'Casa com quintal em Copacabana',
-                       description: 'Excelente casa, recém reformada com 2 vagas de garagem',
-                       rooms: 3, bathrooms: 2, daily_rate: 200, parking_slot: true, pets: false,
-                       property_type: property_type, property_location: region, property_owner: teu })
+    teu = create(:property_owner)
+    casa = create(:property_type, name: 'Casa')
+    sul = create(:property_location, name: 'Sul')
+    create(:property, property_owner: teu, property_type: casa,
+           property_location: sul, title: 'Casa com quintal em Copacabana')
 
-    # simula a ação do usuário
     login_as teu, scope: :property_owner
     visit root_path
     click_on 'Casa com quintal em Copacabana'
     click_on 'Editar'
 
     select 'Casa', from: 'Tipo'
-    select 'Sudeste', from: 'Região'
+    select 'Sul', from: 'Região'
     fill_in 'Título', with: ''
     fill_in 'Descrição', with: ''
     fill_in 'Quartos', with: ''
