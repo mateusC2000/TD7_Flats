@@ -8,5 +8,7 @@ FactoryBot.define do
     pets { true }
     daily_rate { 500 }
     property_owner
+    property_location
+    property_type
   end
 end

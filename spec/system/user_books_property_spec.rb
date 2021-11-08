@@ -9,6 +9,11 @@ describe 'user books property' do
                       property_owner: john, daily_rate: 100)
     
     user = create(:user)
+    mailer_spy = class_spy(PropertyReservationMailer)
+    stub_const('PropertyReservationMailer', mailer_spy)
+    mail = double('PropertyReservationMailer')
+    allow(PropertyReservationMailer).to receive(:notify_new_reservation).and_return(mail)
+    allow(mail).to receive(:deliver_now)
 
     login_as user, scope: :user
     visit root_path
@@ -17,7 +22,8 @@ describe 'user books property' do
     fill_in 'Data de término', with: '20/12/2021'
     fill_in 'Quantidade de pessoas', with: '3'
     click_on 'Enviar Reserva'
-
+    
+    expect(PropertyReservationMailer).to have_received(:notify_new_reservation)
     expect(page).to have_content('16/12/2021')
     expect(page).to have_content('20/12/2021')
     expect(page).to have_content(/3/)

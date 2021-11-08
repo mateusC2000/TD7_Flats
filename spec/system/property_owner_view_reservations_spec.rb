@@ -9,7 +9,8 @@ describe 'Property owner view reservations' do
                       property_owner: john, title: 'Apartamento Novo')
 
     andrew = create(:user)
-    create(:property_reservation, property: property, user: andrew)
+    create(:property_reservation, property: property, user: andrew,
+           start_date: '20/12/2021', end_date: '30/12/2021', guests: 6)
 
     login_as john, scope: :property_owner
     visit root_path
@@ -56,7 +57,8 @@ describe 'Property owner view reservations' do
                       property_owner: john, title: 'Apartamento Novo')
 
     andrew = create(:user)
-    create(:property_reservation, property: property, user: andrew)
+    create(:property_reservation, property: property, user: andrew,
+           start_date: '20/12/2021', end_date: '30/12/2021', guests: 6)
 
     login_as john, scope: :property_owner
     visit root_path
