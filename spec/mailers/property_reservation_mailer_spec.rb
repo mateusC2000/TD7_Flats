@@ -14,7 +14,7 @@ RSpec.describe PropertyReservation do
 
       andrew = User.create!(email: 'andrew@doe.com.br', password: '123456')
 
-      reservation = PropertyReservation.create!(start_date: '2021-12-20', end_date: '2021-12-30',
+      reservation = PropertyReservation.create!(start_date: '2022-12-20', end_date: '2022-12-30',
                                                 guests: 6, property: johns_property, user: andrew)
 
       mail = PropertyReservationMailer.with(reservation: reservation).notify_new_reservation

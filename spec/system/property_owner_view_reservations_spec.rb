@@ -10,7 +10,7 @@ describe 'Property owner view reservations' do
 
     andrew = create(:user)
     create(:property_reservation, property: property, user: andrew,
-           start_date: '20/12/2021', end_date: '30/12/2021', guests: 6)
+           start_date: '20/12/2022', end_date: '30/12/2022', guests: 6)
 
     login_as john, scope: :property_owner
     visit root_path
@@ -20,8 +20,8 @@ describe 'Property owner view reservations' do
     expect(page).not_to have_content 'Reserve Agora'
     expect(page).to have_content 'Reservas'
     expect(page).to have_content "Reserva de #{andrew.email}"
-    expect(page).to have_content 'Data de Início: 20/12/2021'
-    expect(page).to have_content 'Data de Saída: 30/12/2021'
+    expect(page).to have_content 'Data de Início: 20/12/2022'
+    expect(page).to have_content 'Data de Saída: 30/12/2022'
     expect(page).to have_content 'Total de Pessoas: 6'
     expect(page).to have_content 'Status: Pendente'
   end
@@ -58,7 +58,7 @@ describe 'Property owner view reservations' do
 
     andrew = create(:user)
     create(:property_reservation, property: property, user: andrew,
-           start_date: '20/12/2021', end_date: '30/12/2021', guests: 6)
+           start_date: '20/12/2022', end_date: '30/12/2022', guests: 6)
 
     login_as john, scope: :property_owner
     visit root_path
@@ -69,8 +69,8 @@ describe 'Property owner view reservations' do
     expect(current_path).to eq property_path(property)
     expect(page).to have_content 'Reservas'
     expect(page).to have_content "Reserva de #{andrew.email}"
-    expect(page).to have_content 'Data de Início: 20/12/2021'
-    expect(page).to have_content 'Data de Saída: 30/12/2021'
+    expect(page).to have_content 'Data de Início: 20/12/2022'
+    expect(page).to have_content 'Data de Saída: 30/12/2022'
     expect(page).to have_content 'Total de Pessoas: 6'
     expect(page).to have_content 'Status: Aceita'
   end

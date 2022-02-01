@@ -18,14 +18,14 @@ describe 'user books property' do
     login_as user, scope: :user
     visit root_path
     click_on property.title
-    fill_in 'Data de início', with: '16/12/2021'
-    fill_in 'Data de término', with: '20/12/2021'
+    fill_in 'Data de início', with: '16/12/2022'
+    fill_in 'Data de término', with: '20/12/2022'
     fill_in 'Quantidade de pessoas', with: '3'
     click_on 'Enviar Reserva'
     
     expect(PropertyReservationMailer).to have_received(:notify_new_reservation)
-    expect(page).to have_content('16/12/2021')
-    expect(page).to have_content('20/12/2021')
+    expect(page).to have_content('16/12/2022')
+    expect(page).to have_content('20/12/2022')
     expect(page).to have_content(/3/)
     expect(page).to have_content('R$ 400,00')
     expect(page).to have_content('Pedido de reserva enviado com sucesso')
