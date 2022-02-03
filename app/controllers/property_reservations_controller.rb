@@ -8,7 +8,7 @@ class PropertyReservationsController < ApplicationController
     @property_reservation.user = current_user
     @property_reservation.property = Property.find(params[:property_id])
     @property_reservation.save
-    PropertyReservationMailer.with(reservation: @property_reservation).notify_new_reservation.deliver_now
+    NotifyReservationMailerJob.perform_async(@property_reservation.id)
     redirect_to @property_reservation, notice: 'Pedido de reserva enviado com sucesso'
   end
 

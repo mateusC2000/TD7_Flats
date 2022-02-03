@@ -1,5 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
+
 ENV['RAILS_ENV'] ||= 'test'
 
 

@@ -23,7 +23,7 @@ describe 'user books property' do
     fill_in 'Quantidade de pessoas', with: '3'
     click_on 'Enviar Reserva'
     
-    expect(PropertyReservationMailer).to have_received(:notify_new_reservation)
+    
     expect(page).to have_content('16/12/2022')
     expect(page).to have_content('20/12/2022')
     expect(page).to have_content(/3/)
