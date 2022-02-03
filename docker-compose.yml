@@ -1,0 +1,51 @@
+version: '3'
+services:
+  app:
+    container_name: flats
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/opt/app
+    command: rails s -b 0.0.0.0 -p 3000
+    ports:
+      - 3000:3000
+    expose:
+      - '3000'
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+    depends_on:
+      - db
+      - redis
+    networks:
+      - flats
+      - db-flats
+      - net-redis
+  db:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - flats_data:/var/lib/postgresql/data
+    networks:
+      - db-flats
+  redis:
+    image: redis
+    command: redis-server
+    restart: always
+    networks:
+      - net-redis
+
+volumes:
+  flats_data:
+  redis:
+networks: 
+  flats: 
+    external: true
+  db-flats:
+    external: false
+  net-redis:
+    external: false
